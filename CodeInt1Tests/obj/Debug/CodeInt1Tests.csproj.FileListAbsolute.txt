@@ -1,0 +1,17 @@
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\CodeInt1Tests.dll
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\CodeInt1Tests.pdb
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\CodeInt1.exe
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\CodeInt1.pdb
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\CodeInt1.exe.config
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\obj\Debug\CodeInt1Tests.csprojAssemblyReference.cache
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\obj\Debug\CodeInt1Tests.csproj.CoreCompileInputs.cache
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\obj\Debug\CodeInt1Tests.csproj.CopyComplete
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\obj\Debug\CodeInt1Tests.dll
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1Tests\obj\Debug\CodeInt1Tests.pdb

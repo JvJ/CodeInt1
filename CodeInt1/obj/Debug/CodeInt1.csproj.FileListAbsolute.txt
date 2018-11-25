@@ -1,0 +1,7 @@
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1\bin\Debug\CodeInt1.exe.config
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1\bin\Debug\CodeInt1.exe
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1\bin\Debug\CodeInt1.pdb
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1\obj\Debug\CodeInt1.csprojAssemblyReference.cache
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1\obj\Debug\CodeInt1.csproj.CoreCompileInputs.cache
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1\obj\Debug\CodeInt1.exe
+C:\Users\Kaylen\source\repos\CodeInt1\CodeInt1\obj\Debug\CodeInt1.pdb
