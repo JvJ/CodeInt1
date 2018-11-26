@@ -93,6 +93,18 @@ namespace CodeInt1
 
         public IEnumerable<BTNode<T>> BreadthFirstNodes()
         {
+            var q = new MyQueue<BTNode<T>>();
+
+            q.Push(this);
+            while (!q.IsEmpty())
+            {
+                var node = q.Pop();
+                yield return node;
+                foreach (var c in node.Children)
+                {
+                    q.Push(c);
+                }
+            }
             yield break;
         }
 
@@ -123,7 +135,7 @@ namespace CodeInt1
         // Problem 4.3 - Create a minimal height bin tree from a sorted array
         // NOTE: For now, I'm going to assume that the tree itself doesn't need to 
         // be sorted.  If it does, I'll re-do it
-        private static BTNode<T> TreeFromSorted(Comparator<T> comp, T[] array)
+        public static BTNode<T> TreeFromSorted(Comparator<T> comp, T[] array)
         {
             if (!Util.IsSorted(comp, array))
             {
@@ -131,6 +143,18 @@ namespace CodeInt1
             }
 
             return null;
+        }
+
+        // Problem 4.4 - Create a linked list of all nodes at a given depth
+        // My approach: it's just a variation of the breadth-first iteration,
+        // But depths are considered as well.
+        public LinkedList<BTNode<T>> ListAtDepth(int depth)
+        {
+            var q = new MyQueue<Tuple<BTNode<T>, int>>();
+
+            var t = (1, 2);
+            //var (a,b) = (this, 0);
+            //q.Push((this, 0));
         }
     }
 }

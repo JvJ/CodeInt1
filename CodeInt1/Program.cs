@@ -39,7 +39,8 @@ namespace CodeInt1
             // StackTests();
             // SetofStacksTests();
             TreeTests();
-            GraphTests();
+            // GraphTests();
+            // QueueTests();
 
             Console.WriteLine("Some mods: {0}", -1 % -10);
 
@@ -127,6 +128,43 @@ namespace CodeInt1
             }
         }
 
+        static void QueueTests()
+        {
+            var myQ = new MyQueue<int>();
+
+            Console.WriteLine("I have a queue here.");
+
+            foreach (int i in new[] { 1, 2, 3, 4, 5 })
+            {
+                myQ.Push(i);
+            }
+
+            // Let's cycle this for a while
+            for (int i = 6; i < 10000; i++)
+            {
+                myQ.Pop();
+                myQ.Push(i);
+            }
+
+            Console.WriteLine("Current queue cap: {0}", myQ.Capacity);
+            Console.WriteLine("Current queue: [{0}]", string.Join(",", myQ));
+
+            // Upsizing and downsizing
+            myQ = new MyQueue<int>();
+            for (int i = 0; i < 9; i++)
+            {
+                myQ.Push(i);
+            }
+            Console.WriteLine("Current queue cap: {0}", myQ.Capacity);
+            Console.WriteLine("Current queue: [{0}]", string.Join(",", myQ));
+            for (int i = 0; i < 5; i++)
+            {
+                myQ.Pop();
+            }
+            Console.WriteLine("Current queue cap: {0}", myQ.Capacity);
+
+        }
+
         static void SetofStacksTests()
         {
             var myStack = new SetOfStacks<int>(3);
@@ -203,6 +241,7 @@ namespace CodeInt1
 
 
             Console.WriteLine("Depth first of bt1: [{0}]", string.Join(",", balancedTree1.DepthFirst()));
+            Console.WriteLine("Breadth first of bt1: [{0}]", string.Join(",", balancedTree1.BreadthFirst()));
         }
 
         public static void GraphTests()

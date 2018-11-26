@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -296,7 +297,7 @@ namespace CodeInt1
     }
 
     // Wrapping array implementation of queue
-    public class MyQueue<T>
+    public class MyQueue<T> : IEnumerable<T>
     {
         private const int DEFAULT_CAPACITY = 8;
 
@@ -305,12 +306,13 @@ namespace CodeInt1
         // Both start and end can go past the end of the array,
         // as long as the difference between them is less than
         // the size of the array
-        private int m_start = 0;
-        private int m_end = 0;
+        private long m_start = 0;
+        private long m_end = 0;
 
-        public int Count => m_end - m_start;
-        private int StartIdx => m_start % m_array.Length;
-        private int EndIdx => m_end % m_array.Length;
+        public long Count => m_end - m_start;
+        public long Capacity => m_array.Length;
+        private long StartIdx => m_start % m_array.Length;
+        private long EndIdx => m_end % m_array.Length;
 
         public MyQueue()
         {
@@ -321,11 +323,11 @@ namespace CodeInt1
         {
             if (Count >= m_array.Length)
             {
-                grow();
+                resize(m_array.Length * 2);
             }
 
-            m_end++;
             m_array[EndIdx] = val;
+            m_end++;
         }
 
         public T Pop()
@@ -334,24 +336,54 @@ namespace CodeInt1
             {
                 throw new InvalidOperationException("Empty queue.");
             }
+
+            var ret = m_array[StartIdx];
+
+            m_start++;
+            if (m_array.Length > DEFAULT_CAPACITY &&
+                Count <= m_array.Length / 4)
+            {
+                resize(m_array.Length / 2);
+            }
+
+            return ret;
         }
 
-        private void grow ()
+        private void resize (long size)
         {
-            int newCap = m_array.Length * 2;
+            long newCap = Math.Max(size, DEFAULT_CAPACITY);
+            long oldCount = Count;
             T[] newArray = new T[newCap];
 
-            for (int i = 0; i < Count; i++)
+            for (int i = 0; i < oldCount; i++)
             {
-
+                newArray[i] = m_array[(m_start + i) % m_array.Length];
             }
+
+            m_start = 0;
+            m_end = oldCount;
+
+            m_array = newArray;
         }
 
-        private void shrink()
+        public bool IsEmpty()
         {
-
+            return Count == 0;
         }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (long i = m_start; i < m_end; i++)
+            {
+                yield return m_array[i % m_array.Length];
+            }
+            yield break;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
     }
 
     // Problem 3.1: Implement a triple-stack
