@@ -148,13 +148,50 @@ namespace CodeInt1
         // Problem 4.4 - Create a linked list of all nodes at a given depth
         // My approach: it's just a variation of the breadth-first iteration,
         // But depths are considered as well.
-        public LinkedList<BTNode<T>> ListAtDepth(int depth)
+        public Node<BTNode<T>> ListAtDepth(int depth)
         {
-            var q = new MyQueue<Tuple<BTNode<T>, int>>();
+            var q = new MyQueue<(BTNode<T>, int)>();
+            Node<BTNode<T>> ret = null;
+            Node<BTNode<T>> end = null;
 
-            var t = (1, 2);
-            //var (a,b) = (this, 0);
-            //q.Push((this, 0));
+            q.Push((this, 0));
+
+            while (!q.IsEmpty())
+            {
+                var (node, d) = q.Pop();
+
+                foreach (var c in node.Children)
+                {
+                    if ( d + 1 < depth)
+                    {
+                        q.Push((c, d + 1));
+                    }
+                    else if (d + 1 == depth)
+                    {
+                        if (ret == null)
+                        {
+                            ret = end = new Node<BTNode<T>>(c);
+                        }
+                        else
+                        {
+                            end.Append(c);
+                            end = end.next;
+                        }
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        public BTNode<T> CommonAncestor(BTNode<T> a, BTNode<T> b)
+        {
+            return null;
+        }
+
+        private BTNode<T> CommonAncestor_Impl(bool left, BTNode<T> a, BTNode<T> b)
+        {
+            return null;
         }
     }
 }

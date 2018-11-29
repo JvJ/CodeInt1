@@ -110,7 +110,7 @@ namespace CodeInt1
         }
     }
 
-    public class LinkedList
+    public class SlinkedList
     {
         
         

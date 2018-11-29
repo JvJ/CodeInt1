@@ -38,13 +38,12 @@ namespace CodeInt1
             // HeapTests();
             // StackTests();
             // SetofStacksTests();
-            TreeTests();
+            // TreeTests();
             // GraphTests();
             // QueueTests();
+            RecursionTests();
+            // RobotTests();
 
-            Console.WriteLine("Some mods: {0}", -1 % -10);
-
-            
             Console.ReadKey();
         }
 
@@ -52,18 +51,19 @@ namespace CodeInt1
         {
             Console.WriteLine("Hey there.");
 
+
             Node<int> myList = Node<int>.FromColl(new[] { 1, 2, 1, 3, 4, 3, 2, 5 });
             
             Console.WriteLine("My List: [{0}]", string.Join(",", myList));
 
-            LinkedList.RemoveDuplicates(myList);
+            SlinkedList.RemoveDuplicates(myList);
 
             Console.WriteLine("My After dedupes: [{0}]", string.Join(",", myList));
 
             Console.WriteLine("Indices 0: {0}, 1: {1}, 2: {2}",
-                LinkedList.Nth(myList, 0).data,
-                LinkedList.Nth(myList, 1).data,
-                LinkedList.Nth(myList, 2).data);
+                SlinkedList.Nth(myList, 0).data,
+                SlinkedList.Nth(myList, 1).data,
+                SlinkedList.Nth(myList, 2).data);
 
             // Testing removal
             Node<string> strList = Node<string>.FromColl("The quick brown fox jumps over the lazy dog.".Split(' '));
@@ -71,14 +71,14 @@ namespace CodeInt1
             Console.WriteLine("The strList: \"{0}\"", string.Join("->", strList));
 
             // Removing the 7th ("lazy")
-            var seventh = LinkedList.Nth(strList, 7);
-            LinkedList.DeleteNode(seventh);
+            var seventh = SlinkedList.Nth(strList, 7);
+            SlinkedList.DeleteNode(seventh);
             Console.WriteLine("The strList after removal: \"{0}\"", string.Join("->", strList));
 
             // Testing the numbers being added up
-            var n_123 = LinkedList.NumToList(123);
+            var n_123 = SlinkedList.NumToList(123);
             Console.WriteLine("123 list: {0}", string.Join("", n_123));
-            var n_246 = LinkedList.AddLists(n_123, n_123);
+            var n_246 = SlinkedList.AddLists(n_123, n_123);
             Console.WriteLine("246 list: {0}", string.Join("", n_246));
 
             // Testing cycle detection
@@ -89,7 +89,7 @@ namespace CodeInt1
 
             Console.WriteLine("My list is this: {0}", string.Join(" ", words.Take(20)));
 
-            var cycleFound = LinkedList.FindCycleStart(words);
+            var cycleFound = SlinkedList.FindCycleStart(words);
 
             Console.WriteLine("Here is my cycle start: {0}", cycleFound.data);
         }
@@ -227,7 +227,7 @@ namespace CodeInt1
                             t(8,
                                 t(9, null, null),
                                 null),
-                            null),
+                             null),
                         t(5, null, null)),
                     t(3,
                         t(6, null, null),
@@ -242,6 +242,22 @@ namespace CodeInt1
 
             Console.WriteLine("Depth first of bt1: [{0}]", string.Join(",", balancedTree1.DepthFirst()));
             Console.WriteLine("Breadth first of bt1: [{0}]", string.Join(",", balancedTree1.BreadthFirst()));
+
+            var empty = new BTNode<int>[] { }.AsEnumerable<BTNode<int>>();
+
+            Console.WriteLine("List of bt1 at depth 2: [{0}]", string.Join(",", from n in balancedTree1.ListAtDepth(2) ?? empty
+                                                                                select n.Data));
+            Console.WriteLine("List of bt2 at depth 2: [{0}]", string.Join(",", from n in balancedTree2.ListAtDepth(2) ?? empty
+                                                                                select n.Data));
+            Console.WriteLine("List of ut2 at depth 2: [{0}]", string.Join(",", from n in unbalancedTree1.ListAtDepth(2) ?? empty
+                                                                                select n.Data));
+            Console.WriteLine("List of ut2 at depth 3: [{0}]", string.Join(",", from n in unbalancedTree1.ListAtDepth(3) ?? empty
+                                                                                select n.Data));
+            Console.WriteLine("List of ut2 at depth 4: [{0}]", string.Join(",", from n in unbalancedTree1.ListAtDepth(4) ?? empty
+                                                                                select n.Data));
+            Console.WriteLine("List of ut2 at depth 5: [{0}]", string.Join(",", from n in unbalancedTree1.ListAtDepth(5) ?? empty
+                                                                                select n.Data));
+
         }
 
         public static void GraphTests()
@@ -264,6 +280,31 @@ namespace CodeInt1
             Console.WriteLine("Route from D to A?: {0}", D.RouteTo(A));
             Console.WriteLine("Route from E to E?: {0}", E.RouteTo(E));
             Console.WriteLine("Route from A to A?: {0}", A.RouteTo(A));
+        }
+
+        public static void RecursionTests()
+        {
+            Console.WriteLine("First 10 fib numbers: [{0}]", string.Join(",", Recursion.Fibs().Take(10)));
+
+            Console.WriteLine("String permutations of 'abcd':");
+            int i = 0;
+            foreach (string s in Recursion.StringPermutations("abcd"))
+            {
+                Console.WriteLine($"{i++}:\t{s}");
+            }
+        }
+
+        public static void RobotTests()
+        {
+            var grid = new RobotGrid(3, 3);
+            var rob = new Robot(0, 0);
+            // grid[0, 1] = Square.Obstacle;
+
+            Console.WriteLine("The grid:");
+            Console.WriteLine(grid);
+
+            int paths = rob.PossiblePaths(grid);
+            Console.WriteLine("Paths: {0}", paths);
         }
     }
 }
